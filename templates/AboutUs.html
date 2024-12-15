@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OBJECT RECOMMENDATION</title>
+    <!--    Boots trap links-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!--Bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+body{
+background-color:#F9E8C9;
+}
+  .backColor{
+  background-color:#C40C0C !important;
+  }
+  .notificationColor{
+  background-color:#F7B787;
+  }
+  .textColor{
+  color:white !important;
+  }
+    </style>
+</head>
+<body>
+
+{% extends 'index.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row mt-5 me-5 ms-5 mb-3">
+        <div class="col-md-12 col-sm-12">
+
+        </div>
+    </div>
+    <!--    -->
+</div>
+{% endblock %}
+
+<script>
+    var myid=document.getElementById('detailsBtn');
+    function showMessage(){
+    alert(myid.values);
+    }
+
+</script>
+</body>
+</html>

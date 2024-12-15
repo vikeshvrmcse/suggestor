@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OBJECT RECOMMENDATION</title>
+    <!--    Boots trap links-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!--Bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+body{
+background-color:#F9E8C9;
+}
+  .backColor{
+  background-color:#C40C0C !important;
+  }
+  .notificationColor{
+  background-color:#F7B787;
+  }
+  .textColor{
+  color:white !important;
+  }
+.imageDiv{
+width:100%;
+height:100vh;
+background-position:center;
+background-size:cover;
+background-image:url(../static/gallery_background_image.png);
+}
+
+    </style>
+</head>
+<body>
+{% include 'Navbar.html' %}
+{% block content %}
+<div class="container-fluid p-0 m-0">
+
+    <div class="imageDiv flex-column d-flex justify-content-center align-items-center">
+        <h1 class="text-white display-1 text-center">Welcome,</h1>
+        <h3 class="text-center"><b class=" border-4 border-bottom" style="color:red; font-size:80px;">In</b><b class="text-white" style="color:red; font-size:50px"> Object Recommendation</b></h3>
+        <h3 class="text-center"><b class=" border-4 border-bottom" style="color:white; font-size:80px;">G</b><b class="text-white" style="color:red; font-size:50px">allery</b>  <b class="ms-2" style="color:white; font-size:80px;">S</b><b class="text-white" style="color:red; font-size:50px">ection</b></h3>
+
+
+    </div>
+    <h1 class="text-center text-uppercase m-5"><b class="text-danger border-bottom border-4 border-danger">TOP</b> 8
+        books</h1>
+    <div class="row row-cols-1 row-cols-lg-5 row-cols-md-3 row-cols-sm-3 g-4 border border-5 border-danger m-5 p-5 overflow-scroll"
+         style="height:50vh;">
+
+        {% if book_name %}
+        {% for i in range(book_name[:8]|length) %} <!-- Limit to the first 10 books -->
+        <div class="col-sm-12 col-md-6 col-lg-3">
+            <div class="card">
+                <img src="{{ image[i] }}" class="card-img-top" alt="..." style="height:25vh;">
+                <div class="card-body p-1 border border-3 border-white text-white backColor" style="font-size:13px;">
+                    <p class="card-title p-0 m-1"><b>{{ book_name[i] }}</b></p>
+                    <p class="card-text p-0 m-1">Author-Name {{ author[i] }}</p>
+                    <div class="d-flex flex-row p-1 justify-content-between">
+                        <p class="card-text m-1">Votes {{ voting[i] }}</p>
+                        <p class="card-text m-1">Ratings {{ "%.2f" | format(rating[i]) }}</p>
+                        <button style="font-size:11px;" class="btn p-1 btn-outline-light fa-0"
+                                onClick='alert("{{ book_name[i] }}, book is not appearable, because under development")'>
+                            <i class="bi bi-book-half fs-0 p-0"></i> VIEW
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>No books to display</p>
+        {% endif %}
+    </div>
+
+    <h1 class="text-center text-uppercase m-5 "><b class="text-danger border-bottom border-4 border-danger">TOP</b> 10
+        Movies </h1>
+    <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4 border border-5 border-danger m-5 p-5 overflow-scroll"
+         style="height:75vh;">
+        {% if movie_box %}
+
+        {% for i in movie_box[:12] %} <!-- Slice to only include the first 10 movies -->
+        <div class="col-sm-12 col-md-6 col-lg-3 p-3">
+            <div class="card shadow rounded">
+                <!-- Placeholder image or actual image source -->
+                <img src="{{ i[1] }}" class="card-img-top" alt="{{ i[0] }}" style="height:25vh;">
+                <div class="card-body p-1">
+
+                    <div class="d-flex p-2 text-white justify-content-between align-items-center backColor">
+                        <span class="me-2" style="font-size:11px;"><b>{{ i[0] }}</b></span>
+                        <a href="#" style="font-size:11px;" class="btn btn-outline-light"
+                           onClick="alert('{{i[0]}}, movie is not appearable, because under development')">VIEW</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <li>No movies to display</li>
+        {% endif %}
+    </div>
+
+
+</div>
+{% endblock %}
+{% include 'Footer.html' %}
+<script>
+    var myid=document.getElementById('detailsBtn');
+    function showMessage(){
+    alert(myid.values);
+    }
+
+</script>
+</body>
+</html>
